@@ -1,0 +1,15 @@
+version: "2"
+services:
+    riemann:
+        image: riemann:test
+        volumes:
+            - ./riemann.config:/etc/riemann.config
+        depends_on:
+            - rabbitmq
+
+    rabbitmq:
+        image: rabbitmq:management
+        ports:
+            - "15672:15672"
+        restart: always
+
