@@ -8,7 +8,8 @@ PAYLOAD=payload
 protoc --encode=Msg proto.proto< msg > $MSG_BIN
 
 PAYLOAD=$(cat $MSG_BIN | base64)
-DATA=$(printf '{"properties":{},"routing_key":"","payload":"%s","payload_encoding":"base64"}' $PAYLOAD)
+ROUTING_KEY=${1:-""}
+DATA=$(printf '{"properties":{},"routing_key":"%s","payload":"%s","payload_encoding":"base64"}' $ROUTING_KEY $PAYLOAD)
 
 rm $MSG_BIN
 

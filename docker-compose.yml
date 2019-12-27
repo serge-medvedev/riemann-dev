@@ -1,11 +1,12 @@
-version: "2"
+version: "2.2"
 services:
     riemann:
         image: riemann:test
         volumes:
-            - ./riemann.config:/etc/riemann.config
+            - ./riemann.config:/etc/riemann.config:ro
         depends_on:
             - rabbitmq
+        scale: 2
 
     rabbitmq:
         image: rabbitmq:management

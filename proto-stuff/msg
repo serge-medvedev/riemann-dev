@@ -1,13 +1,12 @@
 ok: true,
 events: [
     {
-        time: 1577274311
         state: "ok"
         service: "test"
         host: "dell-e6540"
         tags: "test1"
         tags: "test2"
-        ttl: 60
+        ttl: 10
     }
 ]
 
