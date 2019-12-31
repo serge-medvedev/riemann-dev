@@ -8,5 +8,8 @@ events: [
         tags: "test2"
         ttl: 10
     }
-]
+],
+query: {
+    string: "service = \"test\""
+}
 

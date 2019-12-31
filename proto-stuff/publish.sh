@@ -7,9 +7,9 @@ PAYLOAD=payload
 
 protoc --encode=Msg proto.proto< msg > $MSG_BIN
 
-PAYLOAD=$(cat $MSG_BIN | base64)
+PAYLOAD=$(cat $MSG_BIN | base64 -w 0)
 ROUTING_KEY=${1:-""}
-DATA=$(printf '{"properties":{},"routing_key":"%s","payload":"%s","payload_encoding":"base64"}' $ROUTING_KEY $PAYLOAD)
+DATA=$(printf '{"properties":{"reply_to":"queries"},"routing_key":"%s","payload":"%s","payload_encoding":"base64"}' $ROUTING_KEY $PAYLOAD)
 
 rm $MSG_BIN
 

@@ -4,6 +4,8 @@ services:
         image: riemann:test
         volumes:
             - ./riemann.config:/etc/riemann.config:ro
+        networks:
+            - r2
         depends_on:
             - rabbitmq
         scale: 2
@@ -11,6 +13,14 @@ services:
     rabbitmq:
         image: rabbitmq:management
         ports:
+            - "5671-5672:5671-5672"
             - "15672:15672"
+        networks:
+            r2:
+                aliases:
+                    - rabbitmq.local
         restart: always
+
+networks:
+    r2:
 
